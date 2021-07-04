@@ -2,7 +2,10 @@ import vk_api
 from PIL import Image, ImageDraw, ImageFont
 import time
 
-session = vk_api.VkApi('+79869252329', 'Ovsenka200009')
+LOGIN = ""
+PASSWORD = ""
+
+session = vk_api.VkApi(LOGIN, PASSWORD)
 session.auth()
 
 vk = session.get_api()
