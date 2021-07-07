@@ -22,7 +22,7 @@ font = ImageFont.truetype("arial.ttf", size=128) # Font
 draw.text((100, 160), text, font=font, fill=(0, 0, 0))
 filename = "time_" + hour + "_" + minute + ".png"
 print("Saving " + filename)
-img.save(filename)
+img.save("Temp/" + filename)
 
 
 
