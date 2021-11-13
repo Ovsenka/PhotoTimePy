@@ -1,7 +1,5 @@
-import vk_api
 from PIL import Image, ImageDraw, ImageFont
 import time
-from config import LOGIN, PASSWORD
 from session import Session
 import functions
 
