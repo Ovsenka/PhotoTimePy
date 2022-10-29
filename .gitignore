@@ -1,3 +1,4 @@
 # Ignore Temp files, etc..
 
-Temp\
+Temp
+env
