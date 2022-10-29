@@ -1,3 +1,4 @@
 # PhotoTimePy
 
-This project was created for dynamic time in profile on vk.com/Telegram
+Hello from photo-time-py!
+This project is using vk-api and Telegram api for update photo in profile for every minute
