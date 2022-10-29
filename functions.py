@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 import time
-# from config import path_to_save
+
 
 def create_time_pic(path_to_save=None):
     # ---------------------------------------------------------

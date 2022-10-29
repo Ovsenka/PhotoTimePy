@@ -1,2 +1,0 @@
-LOGIN = "login"
-PASSWORD = "password"

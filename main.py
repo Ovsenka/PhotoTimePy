@@ -1,8 +1,8 @@
-from session import Session
-import functions
+
 
 def main():
-    vk = Session()
+    print("Hello, project!")
+    pass
 
 if __name__ == "__main__":
     main()
