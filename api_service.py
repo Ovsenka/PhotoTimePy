@@ -1,10 +1,5 @@
 from vk_api import vk_api
-from typing import NamedTuple
-
-class ServerData(NamedTuple):
-    server: int
-    hash: str
-    photo: str
+from dataclasses_ import ServerData, AccountData
 
 class Client:
     """_summary_
@@ -30,7 +25,16 @@ class Client:
     def get_profile(self) -> dict:
         return self.__api.account.getProfileInfo()
 
-    def upload_photo_on_server(self) -> NamedTuple:
+    def get_profile_info(self) -> AccountData:
+        user_d = self.get_profile()
+        return AccountData(id=user_d['id'], 
+                           name=user_d['first_name'], 
+                           lastname=user_d['last_name'])
+        
+
+    def upload_photo_on_server(self) -> ServerData:
+        own_id = self.get_profile_info().id
+        #self.__api.getOwnerPhotoUploadServer(owner_id=own_id)
         pass
 
     def upload_profile_photo(self) -> None:
