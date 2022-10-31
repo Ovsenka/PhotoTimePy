@@ -16,7 +16,7 @@ class Client:
     
     def get_api(self) -> vk_api.VkApiMethod:
         """_summary_
-            Is used for getting API methods to use non-custom vk_api methods
+            Is used for getting API methods to use origin vk_api methods
         Returns:
             vk_api.VkApiMethod: https://dev.vk.com/method
         """
