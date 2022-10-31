@@ -33,8 +33,7 @@ class Client:
         
 
     def upload_photo_on_server(self) -> ServerData:
-        own_id = self.get_profile_info().id
-        #self.__api.getOwnerPhotoUploadServer(owner_id=own_id)
+        #own_id = self.get_profile_info().id
         pass
 
     def upload_profile_photo(self) -> None:
