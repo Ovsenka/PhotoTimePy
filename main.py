@@ -2,7 +2,7 @@
     Main for start
 """
 import os
-from api_service import Client
+from vk_api_service import Client
 from dtime import get_time, create_img
 
 def main():
