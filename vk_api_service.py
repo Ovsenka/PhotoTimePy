@@ -1,5 +1,8 @@
 from vk_api import vk_api
 from dataclasses_ import ServerData, AccountData
+from requests import post
+from pathlib import PurePath
+import os
 
 class Client:
     """_summary_
@@ -27,14 +30,24 @@ class Client:
 
     def get_profile_info(self) -> AccountData:
         user_d = self.get_profile()
-        return AccountData(id=user_d['id'], 
+        return AccountData(id=str(user_d['id']), 
                            name=user_d['first_name'], 
                            lastname=user_d['last_name'])
         
+    def get_upload_server(self) -> str:
+        own_id = self.get_profile_info().id
+        response = self.__api.photos.getOwnerPhotoUploadServer(owner_id=own_id)
+        return response['upload_url']
 
     def upload_photo_on_server(self) -> ServerData:
-        #own_id = self.get_profile_info().id
-        pass
+        upload_url = self.get_upload_server()
+        path = str(PurePath('Temp', 'time.jpeg'))
+        script_dir = os.path.dirname(__file__)
+        rel_path = "Temp/time.jpeg"
+        abs_file_path = os.path.join(script_dir, rel_path)
+        file = open(abs_file_path, 'rb')
+        resp = post(upload_url, files=file)
+        print("GET RESPONSE: ", resp.text)
 
     def upload_profile_photo(self) -> None:
         #response =  upload_photo_on_server() -> (server, hash, photo)

@@ -2,17 +2,20 @@
     Main for start
 """
 import os
+from time import sleep
 from vk_api_service import Client
 from dtime import get_time, create_img
 
 def main():
     client = Client(login=os.environ.get("LOGIN_AUTH"),
                     password=os.environ.get("PASSWORD_AUTH"))
-    #print(client.get_profile())
+    print(client.get_profile())
     time = get_time()
     print("Time:")
     print(time.hour, time.minute, time.second)
     create_img(time)
+    sleep(4)
+    client.upload_photo_on_server()
     
 
 if __name__ == "__main__":
