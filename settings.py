@@ -17,7 +17,7 @@ class TextSettings:
     # Size text
     SIZE: int = 128                 
     # Text position
-    POS: tuple[int, int] = (49, 80)
+    POS: tuple[int, int] = (49, 75)
 
 IMG_SIZE = (400, 300)
 
