@@ -2,7 +2,7 @@ from vk_api import vk_api
 from dataclasses_ import ServerData, AccountData
 from requests import post
 import os
-from exceptions import UploadPhotoError, SavePhotoError
+from exceptions import UploadPhotoError
 
 class Client:
     """_summary_
@@ -16,7 +16,7 @@ class Client:
         self.__session.auth()
         print("User logged.")
         self.__api= self.__session.get_api()
-    
+     метод вам
     def get_api(self) -> vk_api.VkApiMethod:
         """_summary_
             Is used for getting API methods to use origin vk_api methods

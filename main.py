@@ -15,7 +15,7 @@ def main():
     print(time.hour, time.minute, time.second)
     create_img(time)
     sleep(2)
-    client.upload_photo_on_server()
+    #client.upload_profile_photo()
     
 
 if __name__ == "__main__":
