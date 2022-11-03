@@ -1,6 +1,9 @@
 class SaveImgError(Exception):
     pass
 
+class SavePhotoError(Exception):
+    pass
+
 class UploadPhotoError(Exception):
     def __init__(self, *args) -> None:
         if args:

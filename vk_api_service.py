@@ -1,8 +1,8 @@
 from vk_api import vk_api
 from dataclasses_ import ServerData, AccountData
 from requests import post
-from pathlib import PurePath
 import os
+from exceptions import UploadPhotoError, SavePhotoError
 
 class Client:
     """_summary_
@@ -42,20 +42,27 @@ class Client:
     def upload_photo_on_server(self) -> ServerData:
         upload_url = self.get_upload_server()
         script_dir = os.path.dirname(__file__)
-        rel_path = "Temp/time.jpeg"
+        rel_path = "Temp/time"
         abs_file_path = os.path.join(script_dir, rel_path)
-        print("IMG PATH: ", abs_file_path)
         file = {
          'method': "POST",
          'file': ('time.jpeg', open(abs_file_path, 'rb')),
         }
-        resp = post(upload_url, files=file)
-        print("GET RESPONSE: ", resp)
+        response = post(upload_url, files=file)
+        if response.status_code == 200:
+            res = response.json()
+            print("[OK] Photo uploaded!")
+            return ServerData(res['server'], res['hash'], res['photo'])
+        raise UploadPhotoError(f"POST <{response.status_code}>")
 
     def upload_profile_photo(self) -> None:
-        #response =  upload_photo_on_server() -> (server, hash, photo)
-        # upload profile photo(server, hash, photo)
-        pass
+        data =  self.upload_photo_on_server()
+        try:
+            print("[INFO] Saving photo...")
+            self.__api.photos.saveOwnerPhoto(server=str(data.server), hash=data.hash, photo=data.photo)
+            print("[OK] Photo has saved")
+        except:
+            print("Exception: SaveOwnerPhoto Error")
     
     def clear_albums(self) -> None:
         pass

@@ -15,7 +15,7 @@ class TextSettings:
     # Font from file
     FONT: str = str(PurePath("Fonts", "Roboto-Condensed", "RobotoCondensed-Bold.ttf"))
     # Size text
-    SIZE: int = 128                 
+    SIZE: int = 88                 
     # Text position
     POS: tuple[int, int] = (49, 75)
 

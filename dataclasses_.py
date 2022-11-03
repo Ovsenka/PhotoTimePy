@@ -14,3 +14,4 @@ class CurrentTime(NamedTuple):
     hour: str
     minute: str
     second: str
+    
