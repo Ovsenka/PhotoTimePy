@@ -14,7 +14,7 @@ def main():
     print("Time:")
     print(time.hour, time.minute, time.second)
     create_img(time)
-    sleep(4)
+    sleep(2)
     client.upload_photo_on_server()
     
 

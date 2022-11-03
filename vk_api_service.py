@@ -41,13 +41,16 @@ class Client:
 
     def upload_photo_on_server(self) -> ServerData:
         upload_url = self.get_upload_server()
-        path = str(PurePath('Temp', 'time.jpeg'))
         script_dir = os.path.dirname(__file__)
         rel_path = "Temp/time.jpeg"
         abs_file_path = os.path.join(script_dir, rel_path)
-        file = open(abs_file_path, 'rb')
+        print("IMG PATH: ", abs_file_path)
+        file = {
+         'method': "POST",
+         'file': ('time.jpeg', open(abs_file_path, 'rb')),
+        }
         resp = post(upload_url, files=file)
-        print("GET RESPONSE: ", resp.text)
+        print("GET RESPONSE: ", resp)
 
     def upload_profile_photo(self) -> None:
         #response =  upload_photo_on_server() -> (server, hash, photo)
