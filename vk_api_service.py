@@ -62,7 +62,7 @@ class Client:
             self.__api.photos.saveOwnerPhoto(server=str(data.server), hash=data.hash, photo=data.photo)
             print("[OK] Photo has saved")
         except:
-            print("Exception: SaveOwnerPhoto Error!")
+            print("Exception: SaveOwnerPhoto Error")
     
     def clear_albums(self) -> None:
         pass
