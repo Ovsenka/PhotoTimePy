@@ -16,7 +16,7 @@ class Client:
         self.__session.auth()
         print("User logged.")
         self.__api= self.__session.get_api()
-     метод вам
+
     def get_api(self) -> vk_api.VkApiMethod:
         """_summary_
             Is used for getting API methods to use origin vk_api methods
