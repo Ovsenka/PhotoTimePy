@@ -35,14 +35,14 @@ class Client:
                            name=user_d['first_name'], 
                            lastname=user_d['last_name'])
         
-    def clear_profile_photo(self, photo_id: int) -> bool:
-        '''own_id = self.get_profile_info().id
+    def clear_profile_photo(self, post_id: int) -> None:
+        own_id = self.get_profile_info().id
         all_photos = self.__api.photos.get(owner_id=own_id, album_id="profile")
         for dict_photo in all_photos['items']:
-            if dict_photo['post_id'] == photo_id:
+            if dict_photo['post_id'] == post_id:
+                photo_id = dict_photo['id']
                 self.__api.photos.delete(owner_id=own_id, photo_id=photo_id)
-                return True
-        return False'''
+                return
     
     def get_upload_server(self) -> str:
         own_id = self.get_profile_info().id
@@ -69,15 +69,13 @@ class Client:
         data =  self.upload_photo_on_server()
         own_id = self.get_profile_info().id
         try:
-            print("[INFO] Saving photo...")
             res = self.__api.photos.saveOwnerPhoto(server=str(data.server), hash=data.hash, photo=data.photo)
-            print("[OK] Photo has saved")
+            print("[OK] Photo has uploaded!")
             if self.__prev_photo_id != -1:
                 self.clear_profile_photo(self.__prev_photo_id)
             self.__prev_photo_id = res['post_id']
-            
         except Exception as e:
-            print("Exception: SaveOwnerPhoto Error!", e)
+            print("Exception: SaveOwnerPhoto Error,", e)
     
     def clear_albums(self) -> None:
         pass

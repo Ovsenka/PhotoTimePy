@@ -16,8 +16,7 @@ def main():
     
     while True:
         time = get_time()
-        print(time.hour, time.minute, time.second)
-                   
+        print(time.hour, time.minute, time.second)     
         if int(time.second) <= 2: 
             create_img(time)
             client.upload_profile_photo()
