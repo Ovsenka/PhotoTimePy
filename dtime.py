@@ -16,13 +16,13 @@ def create_img(time: CurrentTime) -> None:
         print("[INFO] Create image...")
         img = Image.new(mode="RGB", size=IMG_SIZE)
         img_draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype(text.FONT, size=128)
+        font = ImageFont.truetype(text.FONT, size=text.SIZE)
         img_draw.text(text.POS, time_str, font=font, fill=colors.WHITE)
         print("[OK] time.JPEG has created!")
         print("[INFO] Saving image...")
         img.save("Temp/time", 'jpeg')
         print("[OK] time.JPEG saved!")
     except:
-        raise SaveImgError("create_img error!")
+        raise SaveImgError()
     
     
