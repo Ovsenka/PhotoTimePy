@@ -15,6 +15,7 @@ class Client:
         )
         self.__session.auth()
         print("User logged.")
+        self.__prev_photo_id = -1
         self.__api= self.__session.get_api()
 
     def get_api(self) -> vk_api.VkApiMethod:
@@ -34,6 +35,15 @@ class Client:
                            name=user_d['first_name'], 
                            lastname=user_d['last_name'])
         
+    def clear_profile_photo(self, post_id: int) -> None:
+        own_id = self.get_profile_info().id
+        all_photos = self.__api.photos.get(owner_id=own_id, album_id="profile")
+        for dict_photo in all_photos['items']:
+            if dict_photo['post_id'] == post_id:
+                photo_id = dict_photo['id']
+                self.__api.photos.delete(owner_id=own_id, photo_id=photo_id)
+                return
+    
     def get_upload_server(self) -> str:
         own_id = self.get_profile_info().id
         response = self.__api.photos.getOwnerPhotoUploadServer(owner_id=own_id)
@@ -51,18 +61,17 @@ class Client:
         response = post(upload_url, files=file)
         if response.status_code == 200:
             res = response.json()
-            print("[OK] Photo uploaded!")
             return ServerData(res['server'], res['hash'], res['photo'])
         raise UploadPhotoError(f"POST <{response.status_code}>")
 
     def upload_profile_photo(self) -> None:
         data =  self.upload_photo_on_server()
         try:
-            print("[INFO] Saving photo...")
-            self.__api.photos.saveOwnerPhoto(server=str(data.server), hash=data.hash, photo=data.photo)
-            print("[OK] Photo has saved")
-        except:
-            print("Exception: SaveOwnerPhoto Error")
+            res = self.__api.photos.saveOwnerPhoto(server=str(data.server), hash=data.hash, photo=data.photo)
+            print("[OK] Photo has uploaded!")
+            if self.__prev_photo_id != -1:
+                self.clear_profile_photo(self.__prev_photo_id)
+            self.__prev_photo_id = res['post_id']
+        except Exception as e:
+            print("Exception: SaveOwnerPhoto Error,", e)
     
-    def clear_albums(self) -> None:
-        pass
