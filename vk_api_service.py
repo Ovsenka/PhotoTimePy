@@ -61,13 +61,11 @@ class Client:
         response = post(upload_url, files=file)
         if response.status_code == 200:
             res = response.json()
-            print("[OK] Photo uploaded!")
             return ServerData(res['server'], res['hash'], res['photo'])
         raise UploadPhotoError(f"POST <{response.status_code}>")
 
     def upload_profile_photo(self) -> None:
         data =  self.upload_photo_on_server()
-        own_id = self.get_profile_info().id
         try:
             res = self.__api.photos.saveOwnerPhoto(server=str(data.server), hash=data.hash, photo=data.photo)
             print("[OK] Photo has uploaded!")
@@ -77,5 +75,3 @@ class Client:
         except Exception as e:
             print("Exception: SaveOwnerPhoto Error,", e)
     
-    def clear_albums(self) -> None:
-        pass

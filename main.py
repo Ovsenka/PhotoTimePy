@@ -20,7 +20,7 @@ def main():
         if int(time.second) <= 2: 
             create_img(time)
             client.upload_profile_photo()
-            sleep(58)
+            sleep(50)
         sleep(1)
             
             
