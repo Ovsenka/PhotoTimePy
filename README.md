@@ -6,6 +6,6 @@ This project is using vk-api and Telegram api for update photo in profile for ev
 
 
 ## Start
-1. export environment variables (LOGIN_AUTH and PASSWORD_AUTH)
-2. install requirements
-3. start main.py
+1. Export environment variables (LOGIN_AUTH and PASSWORD_AUTH)
+2. Install requirements
+3. Start main.py
