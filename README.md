@@ -1,8 +1,8 @@
 # PhotoTimePy
-
 This project is using vk-api and Telegram api for update photo in profile for every minute
-----
-Цель проекта: автоматическое ежеминутное обновление главного фото профиля во Вконтакте/Telegram с текущим временем.
+
+## Цель проекта
+Автоматическое ежеминутное обновление главного фото профиля во Вконтакте/Telegram с текущим временем.
 
 ![image](https://user-images.githubusercontent.com/44780109/200116564-1eba1fa5-c876-4037-9cc1-0a4ca18389d8.png)
 
