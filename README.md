@@ -6,6 +6,8 @@ This project is using vk-api and Telegram api for update profile photo every min
 
 ![image](https://user-images.githubusercontent.com/44780109/200116564-1eba1fa5-c876-4037-9cc1-0a4ca18389d8.png)
 
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmQ3ZTc2NTA4YmFjMDE1MDNjN2JiYWI5ZjNmY2JmZjk2MWYwNjM2OSZjdD1n/jNLTbo3ESyOOLhj44j/giphy.gif"/>
+
 ## Start
 1. Export environment variables (LOGIN_AUTH and PASSWORD_AUTH)
 2. Install requirements (pip3 install -r requirements.txt)
